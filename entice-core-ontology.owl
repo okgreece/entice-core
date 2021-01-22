@@ -1,0 +1,151 @@
+@prefix : <http://data.entice.eu/ontology/entice-core#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix entice-core: <http://data.entice.eu/ontology/entice-core/> .
+@base <http://data.entice.eu/ontology/entice-core> .
+
+<http://data.entice.eu/ontology/entice-core> rdf:type owl:Ontology ;
+                                              dc:created "2021-01-08T00:00:00" ;
+                                              dc:description "The core ontology that will describe the ENTICE educational episodes in anatomy and surgery."@en ;
+                                              dc:issued "2021-01-08T00:00:00" ;
+                                              dc:license <https://creativecommons.org/licenses/by/4.0> ;
+                                              dc:modified "2021-01-19T00:00:00" ;
+                                              dc:title "ENTICE Core Ontology"@en ;
+                                              vann:preferredNamespacePrefix "entice-core" ;
+                                              vann:preferredNamespaceUri entice-core: ;
+                                              rdfs:label "ENTICE Core Ontology"@en ;
+                                              owl:versionInfo 0.1 .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://data.entice.eu/ontology/entice-core/containsMedicalTerm
+entice-core:containsMedicalTerm rdf:type owl:ObjectProperty ;
+                                rdfs:domain entice-core:EducationalEpisode ;
+                                rdfs:range entice-core:MedicalTerm ;
+                                rdfs:comment "An educational episode contains one or more medical terms"@en ;
+                                rdfs:isDefinedBy <http://data.entice.eu/ontology/entice-core> ;
+                                rdfs:label "contains medical term"@en .
+
+
+###  http://data.entice.eu/ontology/entice-core/hasLearningObjective
+entice-core:hasLearningObjective rdf:type owl:ObjectProperty ;
+                                 rdfs:domain entice-core:EducationalEpisode ;
+                                 rdfs:range skos:Concept ;
+                                 rdfs:comment "An educational episode has many learning objectives"@en ;
+                                 rdfs:isDefinedBy <http://data.entice.eu/ontology/entice-core> ;
+                                 rdfs:label "has learning objective"@en .
+
+
+###  http://data.entice.eu/ontology/entice-core/inEpisode
+entice-core:inEpisode rdf:type owl:ObjectProperty ;
+                      rdfs:domain entice-core:MedicalTerm ;
+                      rdfs:range entice-core:EducationalEpisode ;
+                      rdfs:comment "The medical term belongs to an educational episode"@en ;
+                      rdfs:isDefinedBy <http://data.entice.eu/ontology/entice-core> ;
+                      rdfs:label "in episode"@en .
+
+
+###  http://data.entice.eu/ontology/entice-core/interaction
+entice-core:interaction rdf:type owl:ObjectProperty ;
+                        rdfs:domain entice-core:MedicalTerm ;
+                        rdfs:range entice-core:ExperientialFeature ;
+                        rdfs:comment "The medical term has eligible interaction"@en ;
+                        rdfs:isDefinedBy <http://data.entice.eu/ontology/entice-core> ;
+                        rdfs:label "interaction"@en .
+
+
+###  http://data.entice.eu/ontology/entice-core/interactionModality
+entice-core:interactionModality rdf:type owl:ObjectProperty ;
+                                rdfs:domain entice-core:MedicalTerm ;
+                                rdfs:range entice-core:ExperientialFeature ;
+                                rdfs:comment "The medical term has eligible interaction modality"@en ;
+                                rdfs:isDefinedBy <http://data.entice.eu/ontology/entice-core> ;
+                                rdfs:label "interaction modality"@en .
+
+
+###  http://data.entice.eu/ontology/entice-core/learningObjectiveOf
+entice-core:learningObjectiveOf rdf:type owl:ObjectProperty ;
+                                rdfs:domain skos:Concept ;
+                                rdfs:range entice-core:EducationalEpisode ;
+                                rdfs:isDefinedBy <http://data.entice.eu/ontology/entice-core> ;
+                                rdfs:label "Learning Objective is an outcome of an educational episode"@en ,
+                                           "is learning objective of"@en .
+
+
+###  http://data.entice.eu/ontology/entice-core/virtualEnvironment
+entice-core:virtualEnvironment rdf:type owl:ObjectProperty ;
+                               rdfs:domain entice-core:MedicalTerm ;
+                               rdfs:range entice-core:ExperientialFeature ;
+                               rdfs:isDefinedBy <http://data.entice.eu/ontology/entice-core> ;
+                               rdfs:label "The medical term has eligible virtual environemt"@en ,
+                                          "virtual environment"@en .
+
+
+###  http://data.entice.eu/ontology/entice-core/vrModality
+entice-core:vrModality rdf:type owl:ObjectProperty ;
+                       rdfs:domain entice-core:MedicalTerm ;
+                       rdfs:range entice-core:ExperientialFeature ;
+                       rdfs:comment "The medical term has eligible vr modality"@en ;
+                       rdfs:isDefinedBy <http://data.entice.eu/ontology/entice-core> ;
+                       rdfs:label "vr modality" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://data.entice.eu/ontology/entice-core/episodeDescription
+entice-core:episodeDescription rdf:type owl:DatatypeProperty ;
+                               rdfs:domain entice-core:EducationalEpisode ;
+                               rdfs:range rdfs:Literal ;
+                               rdfs:isDefinedBy <http://data.entice.eu/ontology/entice-core> ;
+                               rdfs:label "episode description"@en .
+
+
+###  http://data.entice.eu/ontology/entice-core/episodeTitle
+entice-core:episodeTitle rdf:type owl:DatatypeProperty ;
+                         rdfs:domain entice-core:EducationalEpisode ;
+                         rdfs:range rdfs:Literal ;
+                         rdfs:isDefinedBy <http://data.entice.eu/ontology/entice-core> ;
+                         rdfs:label "episode title"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://data.entice.eu/ontology/entice-core/EducationalEpisode
+entice-core:EducationalEpisode rdf:type owl:Class ;
+                               rdfs:comment "Educational episode of the ENTICE EU project"@en ;
+                               rdfs:isDefinedBy <http://data.entice.eu/ontology/entice-core> ;
+                               rdfs:label "Educational Episode"@en .
+
+
+###  http://data.entice.eu/ontology/entice-core/ExperientialFeature
+entice-core:ExperientialFeature rdf:type owl:Class ;
+                                rdfs:comment "Experiential Feature of the ENTICE EU project"@en ;
+                                rdfs:isDefinedBy <http://data.entice.eu/ontology/entice-core> ;
+                                rdfs:label "Experiential Feature"@en .
+
+
+###  http://data.entice.eu/ontology/entice-core/MedicalTerm
+entice-core:MedicalTerm rdf:type owl:Class ;
+                        rdfs:comment "Medical term included in the ENTICE EU project"@en ;
+                        rdfs:isDefinedBy <http://data.entice.eu/ontology/entice-core> ;
+                        rdfs:label "Medical Term"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+skos:Concept rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
